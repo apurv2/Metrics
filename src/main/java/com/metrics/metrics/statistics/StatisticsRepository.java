@@ -10,7 +10,7 @@ import java.util.List;
 
 public interface StatisticsRepository extends JpaRepository<MetricValues, Integer> {
 
-    @Query("SELECT new com.metrics.metrics.statistics.StatisticsSummaryDTO(AVG(value) as average, MAX(value) as max, MIN(value) as min)from MetricValues  WHERE metrics.id=:metricId")
+    @Query("SELECT new com.metrics.metrics.statistics.StatisticsSummaryDTO(AVG(value) as average, MIN(value) as min, MAX(value) as max, metrics.name as name)from MetricValues  WHERE metrics.id=:metricId group by metrics.name")
     @Transactional(readOnly = true)
     StatisticsSummaryDTO getMetricStatistics(@Param("metricId") int metricId);
 

@@ -2,16 +2,27 @@ package com.metrics.metrics.statistics;
 
 public class StatisticsSummaryDTO {
 
-    public StatisticsSummaryDTO(double average, double max, double min) {
+
+    public StatisticsSummaryDTO(double average, double min, double max, String name) {
         this.average = average;
         this.min = min;
         this.max = max;
+        this.name = name;
     }
 
     private double average;
     private double min;
     private double max;
     private double median;
+    private String name;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public StatisticsSummaryDTO() {
 
